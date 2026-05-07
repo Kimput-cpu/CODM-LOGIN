@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CODM Soldier Terminal | Dev: YOUR NAME</title>
+    <title>CODM Soldier Terminal | Dev: KIM POGI</title>
     <link rel="stylesheet" href="newlogin.css">
 </head>
 <body>
@@ -23,9 +23,14 @@
                 <label>TERMINAL ACCESS UID</label>
                 <input type="password" id="uid" placeholder="ENTER UID...">
             </div>
+
+            <div class="input-group">
+                <label>SECRET ACCESS KEY</label>
+                <input type="password" id="accessKey" placeholder="ENTER PIN...">
+            </div>
             
             <button class="deploy-btn" onclick="authenticate()">VERIFY IDENTITY</button>
-            <div id="error" class="error-msg">ACCESS DENIED: INVALID CREDENTIALS</div>
+            <div id="error" class="error-msg" style="display:none;">ACCESS DENIED: INVALID CREDENTIALS</div>
         </div>
 
         <div id="profileCard" class="card hidden">
@@ -49,13 +54,14 @@
 
         <div class="dev-credits">
             <p>SYSTEM ARCHITECT: <span class="dev-name">KIM POGI</span></p>
-            <p class="sys-version">VER: 1.0.4-STABLE // TERMINAL_OS</p>
+            <p class="sys-version">VER: 1.0.5-PRIVATE // TERMINAL_OS</p>
+            
+            <div style="margin-top: 15px;">
+                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkimput-cpu.github.io%2FCODM-LOGIN&count_bg=%23F39C12&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=SOLDIERS+VISITED&edge_flat=false" alt="Hits">
+            </div>
         </div>
     </div>
 
     <script src="function.js"></script>
-    <div style="margin-top: 20px; text-align: center;">
-   <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkimput-cpu.github.io%2FCODM-LOGIN&count_bg=%23F39C12&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=SOLDIERS+VISITED&edge_flat=false" alt="Hits">
-</div>
 </body>
 </html>
