@@ -1,4 +1,4 @@
-// DATABASE: Cleaned up and ready for login
+
 const soldiersDatabase = [
     { 
         name: "WYKRT・MeruVB", 
@@ -27,64 +27,61 @@ const soldiersDatabase = [
 ];
 
 function authenticate() {
-    // 1. Kunin ang inputs at gamitan ng .trim() para iwas-error sa spaces
+    
     const userInp = document.getElementById('username').value.trim();
     const uidInp = document.getElementById('uid').value.trim();
+    const keyInp = document.getElementById('accessKey').value.trim();
     const errorDiv = document.getElementById('error');
 
-    // 2. Debugging Tool (Makikita mo sa F12 > Console kung ano ang mali)
-    console.log("Attempting Login...");
-    console.log("Typed Name:", userInp);
-    console.log("Typed UID:", uidInp);
+   
+    const MASTER_KEY = "WYKRT2026"; 
 
-    // 3. Search Logic
+    console.log("Authentication initiated...");
+
+    if (keyInp !== MASTER_KEY) {
+        errorDiv.innerText = "ACCESS DENIED: INVALID SECRET KEY";
+        errorDiv.style.display = "block";
+        console.warn("Security Alert: Wrong Access Key used.");
+        return; // Stop execution
+    }
+
     const soldier = soldiersDatabase.find(s => {
-        // Ginagawa nating lowercase pareho para hindi ma-arte sa Big/Small letters
         const isNameMatch = s.name.toLowerCase() === userInp.toLowerCase();
-        // String comparison para sa mahabang UID
         const isUidMatch = s.uid === uidInp;
-        
         return isNameMatch && isUidMatch;
     });
 
-    // 4. Execution
     if (soldier) {
-        console.log("Match Found: " + soldier.name);
+        console.log("Access Granted: Welcome, " + soldier.name);
         errorDiv.style.display = "none";
         
-        // Update Stats (Text)
-        document.getElementById('pName').innerText = soldier.name;
+        document.getElementById('pName').innerText = soldier.name.toUpperCase();
         document.getElementById('pUid').innerText = "UID: " + soldier.uid;
         document.getElementById('pRank').innerText = soldier.rank;
         document.getElementById('pKd').innerText = soldier.kd;
         document.getElementById('pLvl').innerText = soldier.lvl;
 
-        // Update Avatar (Image Injection)
         const avatarContainer = document.getElementById('pAvatar');
         if (soldier.img) {
-            avatarContainer.innerHTML = `<img src="${soldier.img}" alt="Soldier" style="width:100%; height:100%; object-fit:cover;">`;
+            avatarContainer.innerHTML = `<img src="${soldier.img}" alt="Profile" style="width:100%; height:100%; object-fit:cover; border-radius: 5px;">`;
         } else {
-            avatarContainer.innerHTML = `<div style="font-size:40px; display:flex; justify-content:center; align-items:center; height:100%;">👤</div>`;
+            avatarContainer.innerHTML = `<div style="font-size:50px; display:flex; justify-content:center; align-items:center; height:100%;">👤</div>`;
         }
 
-        // Switch View with Animation
         document.getElementById('loginCard').classList.add('hidden');
         document.getElementById('profileCard').classList.remove('hidden');
         
     } else {
-        // Access Denied
-        console.error("No match found in database.");
+        errorDiv.innerText = "ACCESS DENIED: INVALID IGN OR UID";
         errorDiv.style.display = "block";
         
-        // Dagdag: Shake effect sa login card pag mali
         const card = document.getElementById('loginCard');
         card.style.animation = 'none';
-        void card.offsetWidth; // Trigger reflow
+        void card.offsetWidth; 
         card.style.animation = 'shake 0.4s ease'; 
     }
 }
 
 function logout() {
-    // Standard logout
     location.reload();
 }
