@@ -30,7 +30,7 @@ const soldiersDatabase = [
         rank: "GRANDMASTER", 
         kd: "20.85", 
         lvl: "400",
-        img: "ivan.png"
+        img: "ivan.jpg"
     }
 ];
 
