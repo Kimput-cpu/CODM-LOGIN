@@ -23,6 +23,14 @@ const soldiersDatabase = [
         kd: "34.50", 
         lvl: "400",
         img: "jess.png"
+    },
+    { 
+        name: "WYKRT・VanïVB", 
+        uid: "6848109271469522945", 
+        rank: "GRANDMASTER", 
+        kd: "20.85", 
+        lvl: "400",
+        img: "ivan.png"
     }
 ];
 
